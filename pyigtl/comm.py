@@ -165,7 +165,8 @@ class OpenIGTLinkServer(SocketServer.TCPServer, OpenIGTLinkBase):
             self.host = "127.0.0.1"
         else:
             if sys.platform.startswith('win32'):
-                self.host = socket.gethostbyname(socket.gethostname())
+                self.host = iface
+                # self.host = socket.gethostbyname(socket.gethostname())
             elif sys.platform.startswith('linux'):
                 import fcntl  # not available on Windows => pylint: disable=import-error
                 soc = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
